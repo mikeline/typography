@@ -1,0 +1,15 @@
+{% extends 'pattern.html' %}
+
+{% block main %}
+<form class="site-form" action="{% url 'login' %}" method="POST">
+{% csrf_token %}
+<table>
+{{ form }}
+</table>
+{% if request.GET.next %}
+<input type="hidden" name="next" value="{{ request.GET.next }}">
+{% endif %}
+<input class="btn btn-secondary" style="margin-top: 30px" type="submit" value="Login">
+</form>
+<br>
+{% endblock %}

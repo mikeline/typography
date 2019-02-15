@@ -1,0 +1,13 @@
+{% extends 'pattern.html' %}
+
+{% block main%}
+    <h2>"{{ name }}"</h2>
+    <ul style="text-decoration-style: solid; color: #646464;">
+    <li>Описание: {{ desc }}</li>
+    <li>Тип: {{ type }}</li>
+    <li>Стоимость: {{ price }}р</li>
+    <li>Продолжительность: ({{ start }})-({{ finish }})</li>
+    <li>Заказчик: {{ last_name }} {{ first_name }} {{ mid_name }} ({{ birth_date }})</li>
+    </ul>
+    <h4 style="margin-top: 50px"><a style="text-decoration-style: solid; color: #646464; " href="{% url 'detail' %}?key={{ key }}">К списку заказов</a></h4>
+{% endblock %}

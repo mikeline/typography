@@ -1,0 +1,27 @@
+{% extends 'pattern.html' %}
+
+{% block main%}
+    <h1 class="heading">{{ typo.name }}</h1>
+    <table style="margin-top: 10px; font-size: 1.5em">
+        <div style="background-color: #D3D3D3; height: 2px"></div>
+        <tr style="margin-top: 20px; font-style: italic">
+            <td>{{ typo.desc }}</td>
+        </tr>
+            <tr><td>Дата основания: {{ typo.found_date }}</td></tr>
+        <tr style="border-top: solid; border-bottom: solid">
+            <td>Директор: {{ typo.admin.last_name }} {{ typo.admin.first_name }} {{ typo.admin.mid_name }} ({{ typo.admin.birth_date }})</td>
+        </tr>
+        <tr style="border-top: solid; border-bottom: solid">
+            <td>Адрес: {{ typo.region }}, {{ typo.city }}, {{ typo.address }}</td>
+        </tr>
+        </table>
+        <h3 style="margin-top: 70px">Список единиц продукции:</h3>
+    <table>
+    {% for i in typo.prod %}
+        <tr><td><a style="margin-right: 10px; text-decoration-style: solid; color: #646464;"  href="{% url 'product' %}?key={{ i }}&typo={{ key }}">{{ i }}</a></td> {% if user.is_authenticated %}<td ><a href="{% url 'delete' %}?key={{ i }}&typo={{ key }}"><button type="button" class="btn btn-outline-danger">Удалить</button></a></td>{% endif %}</tr>
+    {% endfor %}
+    </table>
+    <form class="btn btn-default">
+    <a class="text-dark" href="{% url 'order' %}?key={{ key }}">[+] Добавить</a>
+    </form>
+{% endblock %}

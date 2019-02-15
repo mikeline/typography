@@ -1,0 +1,11 @@
+{% extends 'pattern.html' %}
+
+{% block main %}
+<form class="site-form" action="{% url 'signup' %}" method="POST">
+{% csrf_token %}
+<table>
+{{ form }}
+</table>
+<input class="btn btn-secondary" style="margin-top: 30px" type="submit" value="Signup">
+</form>
+{% endblock %}
